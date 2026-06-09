@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NebulaOS</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="desktop">
+      <div class="desktop-icons">
+        <div class="desk-icon" ondblclick="openApp('terminal')">
+          <div class="icon-img">🖥️</div>
+          <span>Terminal</span>
+        </div>
+        <div class="desk-icon" ondblclick="openApp('files')">
+          <div class="icon-img">📁</div>
+          <span>Files</span>
+        </div>
+        <div class="desk-icon" ondblclick="openApp('editor')">
+          <div class="icon-img">📝</div>
+          <span>Editor</span>
+        </div>
+        <div class="desk-icon" ondblclick="openApp('browser')">
+          <div class="icon-img">🌐</div>
+          <span>Browser</span>
+        </div>
+        <div class="desk-icon" ondblclick="openApp('music')">
+          <div class="icon-img">🎵</div>
+          <span>Music</span>
+        </div>
+        <div class="desk-icon" ondblclick="openApp('calc')">
+          <div class="icon-img">🔢</div>
+          <span>Calc</span>
+        </div>
+        <div class="desk-icon" ondblclick="openApp('settings')">
+          <div class="icon-img">⚙️</div>
+          <span>Settings</span>
+        </div>
+        <div class="desk-icon" ondblclick="openApp('about')">
+          <div class="icon-img">💻</div>
+          <span>About</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- TASKBAR -->
+    <div id="taskbar">
+      <div id="taskbar-left">
+        <button id="start-btn" onclick="toggleStartMenu()">⬡</button>
+      </div>
+      <div id="taskbar-apps"></div>
+      <div id="taskbar-right">
+        <div id="clock"></div>
+      </div>
+    </div>
+
+    <!-- START MENU -->
+    <div id="start-menu">
+      <input
+        class="sm-search"
+        type="text"
+        placeholder="Search apps..."
+        oninput="filterStartMenu(this.value)"
+      />
+      <div class="sm-section-label">Apps</div>
+      <div id="sm-apps">
+        <div
+          class="sm-item"
+          onclick="
+            openApp('terminal');
+            closeStartMenu();
+          "
+        >
+          <span class="sm-icon">🖥️</span>Terminal
+        </div>
+        <div
+          class="sm-item"
+          onclick="
+            openApp('files');
+            closeStartMenu();
+          "
+        >
+          <span class="sm-icon">📁</span>File Manager
+        </div>
+        <div
+          class="sm-item"
+          onclick="
+            openApp('editor');
+            closeStartMenu();
+          "
+        >
+          <span class="sm-icon">📝</span>Text Editor
+        </div>
+        <div
+          class="sm-item"
+          onclick="
+            openApp('browser');
+            closeStartMenu();
+          "
+        >
+          <span class="sm-icon">🌐</span>Browser
+        </div>
+        <div
+          class="sm-item"
+          onclick="
+            openApp('music');
+            closeStartMenu();
+          "
+        >
+          <span class="sm-icon">🎵</span>Music Player
+        </div>
+        <div
+          class="sm-item"
+          onclick="
+            openApp('calc');
+            closeStartMenu();
+          "
+        >
+          <span class="sm-icon">🔢</span>Calculator
+        </div>
+        <div
+          class="sm-item"
+          onclick="
+            openApp('settings');
+            closeStartMenu();
+          "
+        >
+          <span class="sm-icon">⚙️</span>Settings
+        </div>
+        <div
+          class="sm-item"
+          onclick="
+            openApp('about');
+            closeStartMenu();
+          "
+        >
+          <span class="sm-icon">💻</span>About NikhilOS
+        </div>
+      </div>
+      <div class="ctx-sep"></div>
+      <div
+        class="sm-item"
+        onclick="
+          showNotif('System', 'Shutting down NikhilOS...', 'warn');
+          closeStartMenu();
+        "
+      >
+        <span class="sm-icon">⏻</span>Shutdown
+      </div>
+    </div>
+
+    <!-- CONTEXT MENU -->
+    <div id="ctx-menu">
+      <div
+        class="ctx-item"
+        onclick="
+          openApp('terminal');
+          closeCtx();
+        "
+      >
+        🖥️ Open Terminal
+      </div>
+      <div
+        class="ctx-item"
+        onclick="
+          openApp('files');
+          closeCtx();
+        "
+      >
+        📁 Open Files
+      </div>
+      <div class="ctx-sep"></div>
+      <div
+        class="ctx-item"
+        onclick="
+          showNotif('Wallpaper', 'Wallpaper changed!', 'success');
+          closeCtx();
+        "
+      >
+        🎨 Change Wallpaper
+      </div>
+      <div
+        class="ctx-item"
+        onclick="
+          openApp('settings');
+          closeCtx();
+        "
+      >
+        ⚙️ Settings
+      </div>
+      <div class="ctx-sep"></div>
+      <div
+        class="ctx-item"
+        onclick="
+          refreshDesktop();
+          closeCtx();
+        "
+      >
+        🔄 Refresh Desktop
+      </div>
+    </div>
+
+    <!-- NOTIFICATION AREA -->
+    <div id="notif-area"></div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
